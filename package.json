@@ -1,41 +1,28 @@
 {
-  "name": "pkg-name",
-  "type": "module",
-  "version": "0.0.0",
+  "name": "@vue3-oop/ssr-plugin-vue3",
+  "version": "1.0.0",
   "packageManager": "pnpm@8.6.10",
   "description": "",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "author": "agileago <agileago@gmail.com>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/antfu/pkg-name#readme",
+  "homepage": "https://github.com/agileago/ssr-plugin-vue3",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/pkg-name.git"
+    "url": "git+https://github.com/agileago/ssr-plugin-vue3.git"
   },
-  "bugs": "https://github.com/antfu/pkg-name/issues",
+  "bugs": "https://github.com/agileago/ssr-plugin-vue3/issues",
   "keywords": [],
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
-    }
-  },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
   "files": [
-    "dist"
+    "cjs",
+    "esm"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
@@ -43,7 +30,6 @@
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
-    "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -60,8 +46,62 @@
     "simple-git-hooks": "^2.9.0",
     "typescript": "^5.1.6",
     "unbuild": "^1.2.1",
+    "@types/webpack": "^4.41.10",
+    "@vue3-oop/ssr-plugin-vue3": "workspace:^*"
+  },
+  "dependencies": {
+    "@vue/server-renderer": "^3.3.4",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.12.13",
+    "@babel/runtime": "^7.12.13",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@types/semver": "^7.3.13",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vue/babel-plugin-jsx": "^1.1.5",
+    "@vue/compiler-sfc": "^3.0.7",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import": "1.13.3",
+    "core-js": "^3.6.4",
+    "css-loader": "^5.2.7",
+    "file-loader": "^6.2.0",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0",
+    "optimize-css-assets-webpack-plugin": "^6.0.0",
+    "ora": "^4.0.4",
+    "pinia": "^2.0.17",
+    "postcss": "^8.0.0",
+    "postcss-discard-comments": "^5.0.0",
+    "postcss-flexbugs-fixes": "^5.0.0",
+    "postcss-loader": "^4.0.0",
+    "postcss-preset-env": "7.6.0",
+    "postcss-safe-parser": "^6.0.0",
+    "semver": "^7.3.8",
+    "ssr-common-utils": "^6.2.97",
+    "ssr-deepclone": "^1.0.0",
+    "ssr-mini-css-extract-plugin": "^1.0.0",
+    "ssr-serialize-javascript": "^6.0.0",
+    "ssr-types": "^6.2.3",
+    "ssr-vite-plugin-style-import": "^2.0.1",
+    "ssr-webpack": "^6.2.10",
+    "terser-webpack-plugin": "^2.3.5",
+    "unplugin-auto-import": "^0.12.1",
+    "unplugin-vue-components": "^0.22.12",
+    "url-loader": "^4.1.1",
     "vite": "^4.4.7",
-    "vitest": "^0.33.0"
+    "vue": "^3.0.0",
+    "vue-loader": "^17.0.0",
+    "vue-router": "^4.0.0",
+    "vuex": "^4.0.0",
+    "webpack": "^4.42.1",
+    "webpack-bundle-analyzer": "^3.6.1",
+    "webpack-chain": "^6.4.0",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpackbar": "^5.0.0-3"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
